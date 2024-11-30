@@ -1,10 +1,10 @@
 import mongoose, { Schema, Document } from 'mongoose'
 
 interface IGadget extends Document {
-    id: string;
-    name: string;
-    brand: string;
-    releaseDate: Date;
+    id: string
+    name: string
+    brand: string
+    releaseDate: Date
 }
 
 const GadgetSchema: Schema = new Schema({

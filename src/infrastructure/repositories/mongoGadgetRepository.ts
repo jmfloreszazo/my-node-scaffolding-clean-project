@@ -1,9 +1,11 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 import { Gadget } from '../../domain/entities/gadget'
 import { GadgetRepository } from '../../domain/interfaces/gadgetRepository'
 import { GadgetModel } from '../models/gadgetModel'
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/mydatabase');
+mongoose.connect(
+    process.env.MONGODB_URI || 'mongodb://localhost:27017/mydatabase'
+)
 
 export class MongoGadgetRepository implements GadgetRepository {
     async findAll(): Promise<Gadget[]> {

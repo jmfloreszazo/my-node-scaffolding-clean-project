@@ -7,7 +7,7 @@ import { gadgetRoutes } from './presentation/routes/gadgetRoutes'
 import { errorHandler } from './presentation/middleware/errorHandler'
 import { logger } from './infrastructure/logger'
 import { setupSwagger } from './presentation/swagger'
-import { AddressInfo } from 'net';
+import { AddressInfo } from 'net'
 
 const app = Fastify()
 
@@ -21,11 +21,11 @@ const HOST = process.env.HOST || 'localhost' // Ensure HOST is read from environ
 const start = async () => {
     try {
         await app.listen({ port: Number(PORT), host: HOST })
-        const address = app.server.address() as AddressInfo;
+        const address = app.server.address() as AddressInfo
         if (address) {
-            logger.info(`Server URL: http://${HOST}:${PORT}`);
+            logger.info(`Server URL: http://${HOST}:${PORT}`)
         } else {
-            logger.error('Failed to get server address');
+            logger.error('Failed to get server address')
         }
     } catch (err) {
         logger.error(err)

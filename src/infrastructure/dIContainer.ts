@@ -2,7 +2,6 @@ import { MongoGadgetRepository } from './repositories/mongoGadgetRepository'
 import { GadgetsService } from '../services/gadgetsService'
 
 class DIContainer {
-    
     private static _gadgetRepository = new MongoGadgetRepository()
 
     static getGadgetRepository() {
