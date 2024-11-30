@@ -1,15 +1,18 @@
 {
-    "name": "my-node-scaffolding-clean-project",
+    "name": "jmfloreszazo.com-nodejs-scaffolding-clean-architecture",
     "version": "1.0.0",
-    "description": "Sample scaffolding with NodeJS & TypeScript for Clean Architecture",
-    "main": "index.js",
+    "description": "A sample project scaffolding using NodeJS and TypeScript following Clean Architecture principles.",
+    "main": "index.ts",
     "scripts": {
         "dev": "nodemon src/index.ts",
-        "start": "node build/index.js",
+        "start": "node build/index.ts",
         "build": "tsc",
         "format": "prettier . --write",
-        "eslint": "eslint src/**/*.ts",
-        "prepare": "husky install"
+        "lint": "eslint src/**/*.ts",
+        "prepare": "husky install",
+        "test": "jest",
+        "start:mongodb": "docker run --name mongodb -d -p 27017:27017 mongo:latest",
+        "stop:mongodb": "docker stop mongodb"
     },
     "lint-staged": {
         "src/**/*.ts": [
@@ -19,16 +22,34 @@
     },
     "author": "https://jmfloreszazo.com",
     "license": "MIT",
+    "engines": {
+        "node": ">=22.0.0"
+    },
+    "dependencies": {
+        "@fastify/swagger": "^9.4.0",
+        "@fastify/swagger-ui": "^5.1.0",
+        "class-validator": "^0.14.1",
+        "dotenv": "^16.4.5",
+        "fastify": "^5.0.0",
+        "fastify-swagger": "^5.2.0",
+        "jsonwebtoken": "^9.0.2",
+        "mongoose": "^8.8.3",
+        "reflect-metadata": "^0.2.2",
+        "winston": "^3.17.0"
+    },
     "devDependencies": {
+        "@types/jest": "^29.0.0",
+        "@types/jsonwebtoken": "^9.0.7",
         "@types/node": "^22.10.1",
         "@typescript-eslint/eslint-plugin": "^8.16.0",
         "@typescript-eslint/parser": "^8.16.0",
         "eslint": "^9.15.0",
+        "husky": "^8.0.0",
+        "jest": "^29.0.0",
         "nodemon": "^3.1.7",
         "prettier": "3.4.1",
         "ts-node": "^10.9.2",
         "typescript": "^5.7.2",
-        "typescript-eslint": "8.16.0",
-        "husky": "^8.0.0"
+        "typescript-eslint": "8.16.0"
     }
 }
