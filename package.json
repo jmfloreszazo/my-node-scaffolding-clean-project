@@ -9,6 +9,7 @@
         "build": "tsc",
         "format": "prettier . --write",
         "lint": "eslint src/**/*.ts",
+        "lint:fix": "eslint --fix src/**/*.ts",
         "prepare": "husky install",
         "test": "jest",
         "start:mongodb": "docker run --name mongodb -d -p 27017:27017 mongo:latest",
