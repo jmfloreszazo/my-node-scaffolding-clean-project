@@ -13,12 +13,13 @@
         "prepare": "husky install",
         "test": "jest",
         "start:mongodb": "docker run --name mongodb -d -p 27017:27017 mongo:latest",
-        "stop:mongodb": "docker stop mongodb"
+        "stop:mongodb": "docker stop mongodb",
+        "lint-staged": "lint-staged"
     },
     "lint-staged": {
         "src/**/*.ts": [
-            "eslint --fix",
-            "prettier --write"
+            "npm run lint",
+            "npm run format"
         ]
     },
     "author": "https://jmfloreszazo.com",
