@@ -16,6 +16,26 @@
             "name": "Attach to Process",
             "processId": "${command:PickProcess}",
             "skipFiles": ["<node_internals>/**"]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Jest Tests All",
+            "skipFiles": ["<node_internals>/**"],
+            "runtimeExecutable": "npx",
+            "args": ["jest", "--runInBand", "--config", "${workspaceFolder}/jest.config.js"],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },    
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Specific Jest Unit Test",
+            "skipFiles": ["<node_internals>/**"],
+            "runtimeExecutable": "npx",
+            "args": ["jest", "--runInBand", "--config", "${workspaceFolder}/jest.config.js", "tests/unit/gadgetController.test.ts"],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
         }
     ]
 }
