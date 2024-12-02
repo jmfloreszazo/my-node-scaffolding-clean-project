@@ -7,12 +7,12 @@ import { validate } from 'class-validator'
 import { MongoGadgetRepository } from '../../src/infrastructure/database/mongoGadgetRepository'
 
 jest.mock('class-validator', () => {
-    const originalModule = jest.requireActual('class-validator');
+    const originalModule = jest.requireActual('class-validator')
     return {
         ...originalModule,
-        validate: jest.fn().mockResolvedValue([])
-    };
-});
+        validate: jest.fn().mockResolvedValue([]),
+    }
+})
 
 jest.mock('../../src/infrastructure/database/mongoGadgetRepository', () => {
     return {
@@ -20,11 +20,11 @@ jest.mock('../../src/infrastructure/database/mongoGadgetRepository', () => {
             return {
                 // Mock the methods used in the tests
                 findAll: jest.fn(),
-                create: jest.fn()
-            };
-        })
-    };
-});
+                create: jest.fn(),
+            }
+        }),
+    }
+})
 
 describe('GadgetController', () => {
     let controller: GadgetController
@@ -36,22 +36,36 @@ describe('GadgetController', () => {
     beforeEach(() => {
         mockGetAllGadgetsUseCase = { execute: jest.fn() }
         mockCreateGadgetUseCase = { execute: jest.fn() }
-        DIContainer.getGetAllGadgetsUseCase = jest.fn().mockReturnValue(mockGetAllGadgetsUseCase)
-        DIContainer.getCreateGadgetUseCase = jest.fn().mockReturnValue(mockCreateGadgetUseCase)
+        DIContainer.getGetAllGadgetsUseCase = jest
+            .fn()
+            .mockReturnValue(mockGetAllGadgetsUseCase)
+        DIContainer.getCreateGadgetUseCase = jest
+            .fn()
+            .mockReturnValue(mockCreateGadgetUseCase)
         controller = new GadgetController()
-        const mockMongoGadgetRepository = new MongoGadgetRepository();
-        DIContainer.getGadgetRepository = jest.fn().mockReturnValue(mockMongoGadgetRepository);
+        const mockMongoGadgetRepository = new MongoGadgetRepository()
+        DIContainer.getGadgetRepository = jest
+            .fn()
+            .mockReturnValue(mockMongoGadgetRepository)
 
         reply = {
             send: jest.fn(),
-            status: jest.fn().mockReturnValue(reply)
+            status: jest.fn().mockReturnValue(reply),
         }
 
         req = {}
     })
 
     test('getAll should return all gadgets', async () => {
-        const gadgets: Gadget[] = [new Gadget('1', 'Gadget1', 'BrandX', '2023-10-01T00:00:00Z', 'A gadget')]
+        const gadgets: Gadget[] = [
+            new Gadget(
+                '1',
+                'Gadget1',
+                'BrandX',
+                '2023-10-01T00:00:00Z',
+                'A gadget'
+            ),
+        ]
         mockGetAllGadgetsUseCase.execute.mockResolvedValue(gadgets)
 
         await controller.getAll(req as FastifyRequest, reply as FastifyReply)
@@ -61,14 +75,20 @@ describe('GadgetController', () => {
     })
 
     test('create should create a new gadget', async () => {
-        const dto = new CreateGadgetDto(); 
-        dto.id = '1'; 
-        dto.name = 'New Gadget'; 
-        dto.brand = 'BrandX'; 
-        dto.releaseDate = '2023-10-01T00:00:00Z'; 
-        dto.description = 'A new gadget';
+        const dto = new CreateGadgetDto()
+        dto.id = '1'
+        dto.name = 'New Gadget'
+        dto.brand = 'BrandX'
+        dto.releaseDate = '2023-10-01T00:00:00Z'
+        dto.description = 'A new gadget'
 
-        const createdGadget = new Gadget('1', 'New Gadget', 'BrandX', '2023-10-01T00:00:00Z', 'A new gadget');
+        const createdGadget = new Gadget(
+            '1',
+            'New Gadget',
+            'BrandX',
+            '2023-10-01T00:00:00Z',
+            'A new gadget'
+        )
 
         mockCreateGadgetUseCase.execute.mockResolvedValue(createdGadget)
 

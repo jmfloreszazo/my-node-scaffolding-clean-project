@@ -22,7 +22,7 @@ describe('GadgetModel Unit Tests', () => {
             name: 'Smartphone',
             brand: 'TechBrand',
             releaseDate: new Date('2023-01-01'),
-            description: 'A new generation smartphone'
+            description: 'A new generation smartphone',
         })
         const savedGadget = await validGadget.save()
 

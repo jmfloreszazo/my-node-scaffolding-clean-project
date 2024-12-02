@@ -9,7 +9,7 @@ describe('GetAllGadgetsUseCase', () => {
 
     beforeEach(() => {
         gadgetsServiceMock = {
-            getAllGadgets: jest.fn()
+            getAllGadgets: jest.fn(),
         } as unknown as jest.Mocked<GadgetsService>
 
         getAllGadgetsUseCase = new GetAllGadgetsUseCase(gadgetsServiceMock)
@@ -17,8 +17,20 @@ describe('GetAllGadgetsUseCase', () => {
 
     it('should return an array of gadgets', async () => {
         const mockGadgets: Gadget[] = [
-            { id: '1', name: 'Gadget One', description: 'First gadget', brand: 'Brand A', releaseDate: new Date().toISOString() },
-            { id: '2', name: 'Gadget Two', description: 'Second gadget', brand: 'Brand B', releaseDate: new Date().toISOString() }
+            {
+                id: '1',
+                name: 'Gadget One',
+                description: 'First gadget',
+                brand: 'Brand A',
+                releaseDate: new Date().toISOString(),
+            },
+            {
+                id: '2',
+                name: 'Gadget Two',
+                description: 'Second gadget',
+                brand: 'Brand B',
+                releaseDate: new Date().toISOString(),
+            },
         ]
         gadgetsServiceMock.getAllGadgets.mockResolvedValue(mockGadgets)
 
@@ -32,7 +44,9 @@ describe('GetAllGadgetsUseCase', () => {
         const error = new Error('Service error')
         gadgetsServiceMock.getAllGadgets.mockRejectedValue(error)
 
-        await expect(getAllGadgetsUseCase.execute()).rejects.toThrow('Service error')
+        await expect(getAllGadgetsUseCase.execute()).rejects.toThrow(
+            'Service error'
+        )
         expect(gadgetsServiceMock.getAllGadgets).toHaveBeenCalled()
     })
 })

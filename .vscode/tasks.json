@@ -22,7 +22,13 @@
             "label": "jest: unit tests",
             "type": "shell",
             "command": "npx",
-            "args": ["jest", "--runInBand", "--config", "jest.config.js", "tests/unit"],
+            "args": [
+                "jest",
+                "--runInBand",
+                "--config",
+                "jest.config.js",
+                "tests/unit"
+            ],
             "group": {
                 "kind": "test",
                 "isDefault": false

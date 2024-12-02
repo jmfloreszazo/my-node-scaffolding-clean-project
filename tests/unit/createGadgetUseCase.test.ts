@@ -9,7 +9,7 @@ describe('CreateGadgetUseCase', () => {
 
     beforeEach(() => {
         gadgetsServiceMock = {
-            createGadget: jest.fn()
+            createGadget: jest.fn(),
             // ...mock other methods if necessary...
         } as unknown as jest.Mocked<GadgetsService>
 
@@ -17,20 +17,20 @@ describe('CreateGadgetUseCase', () => {
     })
 
     it('should create a gadget using the gadgetsService', async () => {
-        const releaseDate = new Date('2024-12-02T10:49:45.226Z');
+        const releaseDate = new Date('2024-12-02T10:49:45.226Z')
         const gadgetDto: CreateGadgetDto = {
             id: '1',
             name: 'Test Gadget',
             brand: 'Test Brand',
             releaseDate: releaseDate.toISOString(),
-            description: 'Test Description'
+            description: 'Test Description',
         }
         const expectedGadget: Gadget = {
             id: '1',
             name: 'Test Gadget',
             brand: 'Test Brand',
             releaseDate: releaseDate.toISOString(),
-            description: 'Test Description'
+            description: 'Test Description',
         }
         gadgetsServiceMock.createGadget.mockResolvedValue(expectedGadget)
 
