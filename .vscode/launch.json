@@ -20,22 +20,7 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Debug Jest Tests All",
-            "skipFiles": ["<node_internals>/**"],
-            "runtimeExecutable": "npx",
-            "args": [
-                "jest",
-                "--runInBand",
-                "--config",
-                "${workspaceFolder}/jest.config.js"
-            ],
-            "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen"
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Debug Specific Jest Unit Test",
+            "name": "Debug Specific Test",
             "skipFiles": ["<node_internals>/**"],
             "runtimeExecutable": "npx",
             "args": [
@@ -43,10 +28,17 @@
                 "--runInBand",
                 "--config",
                 "${workspaceFolder}/jest.config.js",
-                "tests/unit/gadgetController.test.ts"
+                "${input:testFile}"
             ],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "testFile",
+            "type": "promptString",
+            "description": "For example: tests/unit/my-test.test.ts"
         }
     ]
 }

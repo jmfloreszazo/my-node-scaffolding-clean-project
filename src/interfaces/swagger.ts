@@ -19,7 +19,7 @@ const swaggerOptions = {
         tags: [{ name: 'Gadgets', description: 'Gadgets' }],
     },
     exposeRoute: true,
-    routePrefix: process.env.API_DOCS_ROUTE || '/api-docs',
+    routePrefix: process.env.API_DOCS_ROUTE || '/swagger',
     staticCSP: true,
     transformStaticCSP: (header: string) => header,
     openapi: {
@@ -31,43 +31,12 @@ const swaggerOptions = {
         servers: [
             {
                 url: `http://${process.env.HOST || 'localhost'}:${process.env.PORT || 3000}`,
+                // url: `https://${process.env.HOST || 'localhost'}:${process.env.PORT || 3000}`,
                 description: 'Local server',
             },
         ],
     },
 }
-
-/*
-const openapiOptions = {  
-    openapi: {  
-      info: {  
-        title: 'Clean Architecture API',  
-        description: 'API documentation',  
-        version: '1.0.0',  
-      },  
-      servers: [  
-        {  
-          url: `http://${process.env.HOST || 'localhost'}:${process.env.PORT || 3000}`,  
-          description: 'Local server',  
-        },  
-      ],  
-      components: {  
-        securitySchemes: {  
-          Bearer: {  
-            type: 'http',  
-            scheme: 'bearer',  
-            bearerFormat: 'JWT',  
-          },  
-        },  
-      },  
-      security: [{ Bearer: [] }],  
-    },  
-    exposeRoute: true,  
-    routePrefix: process.env.API_DOCS_ROUTE || '/api-docs',  
-    staticCSP: true,  
-    transformStaticCSP: (header: string) => header,  
-  };  
-*/
 
 const swaggerUiOptions = {
     routePrefix: process.env.API_DOCS_ROUTE || '/api-docs',

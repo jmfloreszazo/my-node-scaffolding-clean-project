@@ -8,6 +8,8 @@
 import 'reflect-metadata'
 import Fastify from 'fastify'
 import dotenv from 'dotenv'
+//import fs from 'fs'
+//import path from 'path'
 dotenv.config()
 
 import { gadgetRoutes } from './interfaces/routes/gadgetRoutes'
@@ -17,6 +19,15 @@ import { setupSwagger } from './interfaces/swagger'
 import { AddressInfo } from 'net'
 
 const app = Fastify()
+
+/*
+const app = Fastify({
+  https: {
+    key: fs.readFileSync(path.join(__dirname, '../certs/key.pem')),
+    cert: fs.readFileSync(path.join(__dirname, '../certs/cert.pem'))
+  }
+})
+  */
 
 // Set custom error handler
 app.setErrorHandler(errorHandler)
@@ -43,6 +54,7 @@ const start = async () => {
             const address = app.server.address() as AddressInfo
             if (address) {
                 logger.info(`Server URL: http://${HOST}:${PORT}`)
+                //logger.info(`Server URL: https://${HOST}:${PORT}`)
             } else {
                 logger.error('Failed to get server address')
             }

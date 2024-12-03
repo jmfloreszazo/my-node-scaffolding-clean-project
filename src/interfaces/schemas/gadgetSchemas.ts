@@ -5,6 +5,7 @@
  * @property {string} body.type - The type of the body, which is an object.
  * @property {string[]} body.required - The required fields in the body.
  * @property {object} body.properties - The properties of the body.
+ * @property {string} response.201.properties.id.type - The type of the id property, which is a string.
  * @property {string} body.properties.name.type - The type of the name property, which is a string.
  * @property {string} body.properties.brand.type - The type of the brand property, which is a string.
  * @property {string} body.properties.description.type - The type of the description property, which is a string.
@@ -17,8 +18,6 @@
  * @property {object} response.201.type - The type of the 201 response, which is an object.
  * @property {object} response.201.properties - The properties of the 201 response.
  * @property {string} response.201.properties.id.type - The type of the id property, which is a string.
- * @property {string} response.201.properties.name.type - The type of the name property, which is a string.
- * @property {string} response.201.properties.brand.type - The type of the brand property, which is a string.
  *
  * @property {object} response.400 - The response for a bad request.
  * @property {string} response.400.description - The description of the 400 response.
@@ -43,6 +42,7 @@ export const createGadgetSchema = {
         type: 'object',
         required: ['name', 'brand', 'releaseDate'],
         properties: {
+            id: { type: 'string' },
             name: { type: 'string' },
             brand: { type: 'string' },
             description: { type: 'string' },
@@ -55,8 +55,6 @@ export const createGadgetSchema = {
             type: 'object',
             properties: {
                 id: { type: 'string' },
-                name: { type: 'string' },
-                brand: { type: 'string' },
             },
         },
         400: {

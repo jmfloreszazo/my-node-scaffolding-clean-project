@@ -8,17 +8,6 @@
             "problemMatcher": ["$tsc"]
         },
         {
-            "label": "jest",
-            "type": "shell",
-            "command": "npx",
-            "args": ["jest", "--runInBand", "--config", "jest.config.js"],
-            "group": {
-                "kind": "test",
-                "isDefault": true
-            },
-            "problemMatcher": ["$tsc"]
-        },
-        {
             "label": "jest: unit tests",
             "type": "shell",
             "command": "npx",
@@ -27,13 +16,20 @@
                 "--runInBand",
                 "--config",
                 "jest.config.js",
-                "tests/unit"
+                "${input:testFile}"
             ],
             "group": {
                 "kind": "test",
                 "isDefault": false
             },
             "problemMatcher": ["$tsc"]
+        }
+    ],
+    "inputs": [
+        {
+            "id": "testFile",
+            "type": "promptString",
+            "description": "For example: tests/unit/my-test.test.ts"
         }
     ]
 }

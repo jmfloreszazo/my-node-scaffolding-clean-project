@@ -15,7 +15,8 @@
         "start:mongodb": "docker run --name mongodb -d -p 27017:27017 mongo:latest",
         "stop:mongodb": "docker stop mongodb",
         "test": "jest --config jest.config.js",
-        "test:coverage": "jest --coverage --config jest.config.js"
+        "test:coverage": "jest --coverage --config jest.config.js",
+        "generate-certificates": "mkdir -p certs && openssl req -nodes -new -x509 -keyout certs/key.pem -out certs/cert.pem -subj \"/C=US/ST=State/L=City/O=Organization/OU=Unit/CN=localhost\""
     },
     "lint-staged": {
         "src/**/*.ts": [
