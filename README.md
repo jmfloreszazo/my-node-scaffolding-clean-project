@@ -19,7 +19,7 @@ Estructura de este proyecto:
 │   │   ├── database/        # Configuración y acceso a la base de datos
 │   │   ├── http/            # Configuración de HTTP y clientes
 │   │   ├── config/          # Configuraciones generales
-│   │   └── repositories/    # Implementaciones de repositorios
+│   │   └── repositories/    # Implementaciones de repositorios o databases, etc.
 │   ├── interfaces/          # Interfaces de usuario y controladores
 │   │   ├── controllers/     # Controladores de la aplicación
 │   │   ├── routes/          # Definición de rutas
